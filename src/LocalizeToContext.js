@@ -42,9 +42,9 @@ const LocalizeToProvider = props => {
     }
 
     const unlocalized = (key) => {
-        if (process.env.NODE_ENV === 'production') {
-            console.warn('Unlocalized key [' + key + '] in production')
-        }
+        // if (process.env.NODE_ENV === 'production') {
+        //     console.warn('Unlocalized key [' + key + '] in production')
+        // }
         return key
     }
 
@@ -57,7 +57,9 @@ const LocalizeToProvider = props => {
     }
 
     const downloadURL = (languages) => {
-        return '/v1/languages/' + languages.join(',') + '?apikey=' + apiKey
+        return languages && languages.length
+            ? '/v1/languages/' + languages.join(',') + '?apikey=' + apiKey
+            : '/v1/languages'  + '?apikey=' + apiKey
     }
 
     const snapshotURL = (version, languages) => {
@@ -69,10 +71,6 @@ const LocalizeToProvider = props => {
     const downloadLanguages = (languages, callback = (error)=>{}) => {
         if (!apiKey) {
             callback('API key is required')
-            return
-        }
-        if (!languages || !languages.length) {
-            callback('At least one language is required')
             return
         }
 
@@ -111,6 +109,10 @@ const LocalizeToProvider = props => {
             callback('API key is required')
             return
         }
+        if (!language) {
+            callback('Language is required')
+            return
+        }
 
         setLocalizeIsLoading(true)
         GET(snapshotURL(version, languages),
@@ -137,7 +139,7 @@ const LocalizeToProvider = props => {
         )
     }
 
-    console.log(translations)
+    // console.log(translations)
 
     const result = {
         language, setLanguage,
