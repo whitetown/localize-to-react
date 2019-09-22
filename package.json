@@ -1,0 +1,25 @@
+{
+  "name": "localize-to",
+  "version": "1.0.0",
+  "description": "Allows you to get localization strings from Localize.to service.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whitetown/localize-to-react.git"
+  },
+  "keywords": [
+    "localize",
+    "translate",
+    "internationalization",
+    "i18n"
+  ],
+  "author": "Sergey Chehuta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/whitetown/localize-to-react/issues"
+  },
+  "homepage": "https://github.com/whitetown/localize-to-react#readme"
+}
