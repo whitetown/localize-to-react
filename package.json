@@ -2,9 +2,24 @@
   "name": "localize-to",
   "version": "1.0.0",
   "description": "Allows you to get localization strings from Localize.to service.",
-  "main": "index.js",
+  "main": "build/index.js",
+  "peerDependencies": {
+    "react": "16.8.0",
+    "react-dom": "16.8.0",
+    "webpack": "^4.12.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "webpack-cli": "^3.0.4"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack --watch",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -21,5 +36,10 @@
   "bugs": {
     "url": "https://github.com/whitetown/localize-to-react/issues"
   },
-  "homepage": "https://github.com/whitetown/localize-to-react#readme"
+  "homepage": "https://github.com/whitetown/localize-to-react#readme",
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react-dom": "^16.9.0",
+    "webpack": "^4.12.0"
+  }
 }
