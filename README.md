@@ -4,27 +4,21 @@ This module allows you to get and use localization strings from [Localize.to](ht
 
 ## Localize.To REST API
 
-GET /language/{language}
+- GET /language/{language}
+- GET /languages/{language1,language2}
 
-GET /languages/{language1,language2}
-
-GET /snapshots
-
-GET /snapshot/latest/info
-
-GET /snapshot/latest
-
-GET /snapshot/{version}
-
-GET /snapshot/{version}/language/{language}
-
-GET /snapshot/{version}/languages/{language1,language2}
+- GET /snapshots
+- GET /snapshot/latest/info
+- GET /snapshot/latest
+- GET /snapshot/{version}
+- GET /snapshot/{version}/language/{language}
+- GET /snapshot/{version}/languages/{language1,language2}
 
 ## Currently, this module implements only these API calls:
 
-GET /languages/{language1,language2}
-GET /snapshot/{version}
-GET /snapshot/{version}/languages/{language1,language2}
+- GET /languages/{language1,language2}
+- GET /snapshot/{version}
+- GET /snapshot/{version}/languages/{language1,language2}
 
 this is enough for the most cases.
 
@@ -58,54 +52,54 @@ localize-to exports several components/functions:
 ## Wrap your application in LocalizeToProvider
 
 ```jsx
-    import { LocalizeToProvider } from 'localize-to';
+import { LocalizeToProvider } from 'localize-to';
 
-    const initialTranslations = {
-        en: {
-            key: "value_english",
-            /* and so on */
-        },
-        de: {
-            key: "value_german",
-            /* and so on */
-        },
-    }
+const initialTranslations = {
+    en: {
+        key: "value_english",
+        /* and so on */
+    },
+    de: {
+        key: "value_german",
+        /* and so on */
+    },
+}
 
-    const LocalizedApp = () => {
-        return (
-            <LocalizeToProvider
-                language={'en'}  //by default "en"
-                fallbackLanguage={'en'}  //could be null, by default "en"
-                translations={initialTranslations}  //object
-                apiKey={PROJECT_API_KEY}    //string
-            >
-                <App />
-            </LocalizeToProvider>
-        )
-    }
+const LocalizedApp = () => {
+    return (
+        <LocalizeToProvider
+            language={'en'}  //by default "en"
+            fallbackLanguage={'en'}  //could be null, by default "en"
+            translations={initialTranslations}  //object
+            apiKey={PROJECT_API_KEY}    //string
+        >
+            <App />
+        </LocalizeToProvider>
+    )
+}
 
-    export default LocalizedApp;
+export default LocalizedApp;
 ```
 
 ## Get localization strings
 
 ```jsx
-    import { useLocalizeTo } from 'localize-to'
+import { useLocalizeTo } from 'localize-to'
 
-    const MyComponent = () => {
+const MyComponent = () => {
 
-        const { ls, localize, localizeTo, translations } = useLocalizeTo()
+    const { ls, localize, localizeTo, translations } = useLocalizeTo()
 
-        return (
-            <div>
-                {localize('key')}
-                {localizeTo('key', 'de')}
-                {ls['key']}
-                {ls.key}
-                {translations['en']['key']}
-            </div>
-        )
-    }
+    return (
+        <div>
+            {localize('key')}
+            {localizeTo('key', 'de')}
+            {ls['key']}
+            {ls.key}
+            {translations['en']['key']}
+        </div>
+    )
+}
 ```
 
 **localize(key)**
@@ -126,18 +120,18 @@ is an object that contains translations for all languages
 ## Special unlocalized function
 
 ```jsx
-    import { useLocalizeTo } from 'localize-to'
+import { useLocalizeTo } from 'localize-to'
 
-    const NewComponent = () => {
+const NewComponent = () => {
 
-        const { unlocalized } = useLocalizeTo()
+    const { unlocalized } = useLocalizeTo()
 
-        return (
-            <div>
-            {unlocalized('localization key or any string')}
-            </div>
-        )
-    }
+    return (
+        <div>
+        {unlocalized('localization key or any string')}
+        </div>
+    )
+}
 ```
 
 It does nothing.
