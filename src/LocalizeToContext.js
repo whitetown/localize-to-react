@@ -101,16 +101,16 @@ const LocalizeToProvider = props => {
     }
 
     const downloadLanguage = (language, callback) => {
+        if (!language) {
+            callback('Language is required')
+            return
+        }
         downloadLanguages([language], callback)
     }
 
     const downloadVersion = (version, languages = [], callback = (error)=>{}) => {
         if (!apiKey) {
             callback('API key is required')
-            return
-        }
-        if (!language) {
-            callback('Language is required')
             return
         }
 
