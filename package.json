@@ -1,6 +1,6 @@
 {
   "name": "localize-to",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Allows you to get localization strings from Localize.to service.",
   "main": "build/index.js",
   "peerDependencies": {
