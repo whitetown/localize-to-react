@@ -183,7 +183,7 @@ const withLocalizeTo = InnerComponent => {
         render () {
             return (
                 <LocalizeToConsumer>
-                    {localizeContext => <InnerComponent lc={localizeContext} ls={localizeContext.ls}  />}
+                    {localizeContext => <InnerComponent lc={localizeContext} ls={localizeContext.ls} {...this.props} />}
                 </LocalizeToConsumer>
             )
         }
